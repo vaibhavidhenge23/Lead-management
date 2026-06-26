@@ -1,7 +1,7 @@
 # Lead Management Portal
 
 A small CRM-style portal built with React (Vite). Leads are kept only in
-React state — nothing is written to a backend, SQL, or browser storage, so
+React state - nothing is written to a backend, SQL, or browser storage, so
 the table resets on refresh, exactly as the task asked.
 
 ## Running it
@@ -49,7 +49,7 @@ the State select is `disabled` until a country is picked, and City is
 disabled until a state is picked.
 
 **Validation.** `validate(form)` in `LeadForm.jsx` is a plain function that
-takes the current form values and returns an `errors` object — one key per
+takes the current form values and returns an `errors` object - one key per
 invalid field. It runs on submit; if the object isn't empty, the form
 bails out and shows the messages instead of calling `onAddLead`. Mobile
 number is checked with `/^\d{10}$/`, email (only if entered) with a basic
@@ -58,14 +58,14 @@ number is checked with `/^\d{10}$/`, email (only if entered) with a basic
 
 **Search and filters.** `App.jsx` computes `filteredLeads` with
 `useMemo`, re-running only when `leads` or `filters` change. It's a plain
-`.filter()` — search matches lead name or mobile (case-insensitive,
+`.filter()` - search matches lead name or mobile (case-insensitive,
 partial match), and each filter does an exact match against the
 corresponding field. The filter dropdown *options* themselves
 (`FilterBar.jsx`) are built from whatever values already exist in `leads`,
 so you'll never see a filter for a country that has no leads yet.
 
 **View / Delete.** Clicking "View" sets `viewingLead` in `App` state,
-which is passed to `ViewModal` — it renders `null` when nothing is
+which is passed to `ViewModal` - it renders `null` when nothing is
 selected, so the modal markup is always "there" but invisible until
 needed. "Delete" calls back up to `App`, which filters that lead's `id`
 out of the array.
@@ -79,4 +79,4 @@ A few natural follow-ups an interviewer might ask for, and where they'd go:
 - **Pagination**: would slot into `LeadTable`, slicing `filteredLeads`
   by page instead of rendering every row.
 - **Export to CSV**: a small function building a CSV string from
-  `filteredLeads` and triggering a download — no extra library needed.
+  `filteredLeads` and triggering a download - no extra library needed.
